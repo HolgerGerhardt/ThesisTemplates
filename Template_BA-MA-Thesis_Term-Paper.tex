@@ -14,7 +14,7 @@
 \newcommand{\studentemail}{a.s.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\studentID}{1234567}
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
-\newcommand{\manuscriptdate}{2026-07-12}  % In ISO format: yyyy-mm-dd
+\newcommand{\manuscriptdate}{2026-07-13}  % In ISO format: yyyy-mm-dd
 \newcommand{\manuscripttype}{MA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
 \newcommand{\seminartitle}{%
@@ -1698,14 +1698,14 @@ Here are some examples:
 	Effort $e$ (variable) vs.\ Euler's number $\mathrm{e}$ (numerical constant). \\
 	Expected value $\operatorname{E}[X]$, variance $\operatorname{Var}[X]$, covariance $\mathrm{Cov}[X, Y]$, probability $\Pr[{X \le x}]$. \\
 	Exponential function and logarithm: $\exp x$, $\log y$, $\lg y$, $\ln y$. \\
-	\begin{minipage}{\linewidth}\noindent%
+	\begin{minipage}{\linewidth}\noindent\strut%
 		Sine and cosine function: $\sin \theta$, $\cos \theta$.
 		\begin{equation}
 			f(x) = a_0 + \sum_{n=1}^\infty \left(a_n \cos \frac{n \uppi x}{L} + b_n \sin \frac{n \uppi x}{L} \right).
 		\end{equation}
-	\end{minipage} \\
-	\begin{minipage}{\linewidth}\noindent%
-		Variable $d$ vs.\ differential $\dd$, difference operator $\upDelta$, limit $\lim$.
+	\end{minipage} \\[\belowdisplayskip]
+	\begin{minipage}{\linewidth}\noindent\strut%
+		Variable $d$ vs.\ differential $\dd$, variable $\Delta$ vs.\ difference operator $\upDelta$, limit $\lim$ vs.\ product $l\,i\,m$.
 		\begin{equation}
 			\mathrm{E}[X] \coloneq \int_{-\infty}^{\infty} x\,f(x)\,\dd x; \quad
 			f'(x) \coloneq \frac{\dd f(x)}{\dd x} \coloneq \lim_{\upDelta x \to 0} \frac{f(x + \upDelta x) - f(x)}{\upDelta x}.
@@ -2263,7 +2263,7 @@ Final line on the page. \par
 The whole Latin alphabet in a~short sentence: Amazingly few discotheques provide jukeboxes. All letters between other letters and some punctuation: Incredibly, he makes a major life-change! For example: ``I'll require that the system have two sizes.'' All digits and f-ligatures: Fifty-five fjord truffles offer sufficient flavor, although ${537 + 489 = 1026}$. All French and German special characters: Le c\oe ur d\'e\c cu mais l'\^ame plut\^ot na\"\i ve, Lou\"ys r\^eva de crapa\"uter en cano\"e au del\`a des \^\i les, pr\`es du m\"alstr\"om o\`u br\^ulent les nov\ae. Die Faltung einer Gau\ss-Kurve mit einer Lorentz-Kurve:
 \begin{equation}
 \int_{-\infty}^\infty \frac{y\,\mathrm{e}^{-t^2}}{(x-t)^2+y^2}\,\mathrm{d} t =
-\uppi \, \Re[w(x + i\,y)], \quad w(z) = \mathrm{e}^{-z^2} \operatorname{erfc}(-i\, z), \quad x \in \mathbb{R}, y>0.
+\uppi \, \Re[w(x + \mathrm{i}\,y)], \quad w(z) = \mathrm{e}^{-z^2} \operatorname{erfc}(-\mathrm{i}\, z), \quad x \in \mathbb{R}, y>0.
 \end{equation}
 The cross product $\bm{\alpha} \times \bm{\beta}$ of two vectors $\bm{\alpha}$ and $\bm{\beta}$ is defined by
 \begin{equation}
