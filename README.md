@@ -25,16 +25,16 @@ To work around this restriction, use the macro-enabled
 
 depending on the language of your thesis/paper.
 
-These files include Visual Basic macros that generate the following caption labels:
+These files include Visual Basic macros that generate the following caption labels, respectively:
 
-* “Assumption” or “Annahme,” respectively:
+* “Assumption” or “Annahme”;
 * “Definition”;
-* “Equation” or “Gleichung,” respectively;
-* “Example” or “Beispiel,” respectively;
-* “Figure” or “Abbildung,” respectively;
-* “Hypothesis” or “Hypothese,” respectively;
-* “Remark” or “Anmerkung,” respectively;
-* “Result” or “Resultat,” respectively;
-* “Table” or “Tabelle,” respectively;
+* “Equation” or “Gleichung”;
+* “Example” or “Beispiel”;
+* “Figure” or “Abbildung”;
+* “Hypothesis” or “Hypothese”;
+* “Remark” or “Anmerkung”;
+* “Result” or “Resultat”;
+* “Table” or “Tabelle”;
 * “Theorem” (which should also be used for corollaries, lemmas, and propositions, since these usually share a single counter).
 
