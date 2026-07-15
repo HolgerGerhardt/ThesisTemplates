@@ -486,10 +486,10 @@
 % Type-specific settings
 \setlist[enumerate]{leftmargin = \parindent, labelsep = *}
 	% Fine as long as the list does not include more than 9 items.
-\setlist[enumerate, 1]{label = (\arabic*)}
-\setlist[enumerate, 2]{label = \alph*., align = right}
+\setlist[enumerate, 1]{label = \arabic*.}
+\setlist[enumerate, 2]{label = \alph*), align = left, labelwidth = \parindent, labelsep = 0pt}
 	% Taken from the Chicago Manual of Style (16th ed., Section 6.126)
-\setlist[enumerate, 3]{label = \roman*., align = right, widest* = 3, labelsep = 0.3\parindent}
+\setlist[enumerate, 3]{label = \roman*), align = right, widest* = 3, labelsep = 0.3\parindent}
 \setlist[itemize]{labelsep = 0.5\parindent}
 \setlist[itemize, 2]{label = --}
 
@@ -1037,12 +1037,12 @@
 
 A~thesis generally consists of the following parts:
 \begin{enumerate}
-	\item a~title page,
-	\item a~table of contents,
-	\item optionally, a~list of abbreviations, tables, and/or figures (these are generally unnecessary for theses and more relevant for books),
-	\item the main text (body),
-	\item a~bibliography,
-	\item optionally, an appendix, and
+	\item a~title page;
+	\item a~table of contents;
+	\item optionally, a~list of abbreviations, tables, and/or figures (these are generally unnecessary for theses and more relevant for books);
+	\item the main text (body);
+	\item a~bibliography;
+	\item optionally, an appendix; and
 	\item a~written declaration of authorship.
 \end{enumerate}
 It may make sense to place the bibliography after potential appendices. Please ask your supervisor for their preference. The parts before the main text are called ``front matter.''
@@ -1189,7 +1189,7 @@ Let us now inspect the ``Concluding Remarks'' subsection from \citet{sigfridsson
 You may find the following list of questions helpful as a~guide to making sure that your manu\-script covers all important aspects. The questions are primarily intended for doctoral and advanced researchers, but they may also be helpful to students writing term papers and theses.
 
 Your introduction might answer the following questions (not necessarily in this order, but this order will give rise to a~``funnel'' structure):
-\begin{enumerate}[labelindent = \parindent, leftmargin = 2\parindent]
+\begin{enumerate}[widest* = 10]
 	\item What do we already know?
 	\item What do we not know yet (the ``knowledge gap'')?
 	\item Why is it interesting\slash relevant to close the gap?
@@ -1200,7 +1200,7 @@ Your introduction might answer the following questions (not necessarily in this 
 \end{enumerate}
 
 And your conclusion/discussion might answer the following questions (again, not necessarily in this order, but this order will give rise to a~``reverse funnel'' structure):
-\begin{enumerate}[resume, labelindent = \parindent, leftmargin = 2\parindent]
+\begin{enumerate}[resume, widest* = 10]
 	\item What was the knowledge gap before the current study? [Similar to the introduction.]
 	\item \emph{How did we contribute to closing that gap, and what did we find? [A]} (Which method\slash dataset did we use, and what are the results?---Recap and take-home message.)
 	\item How do our results relate to (confirm\slash contradict\slash complement\slash extend) the results from previous and other contemporaneous studies?
