@@ -5,18 +5,55 @@
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Important notes
+
+% For compiling this document without any changes, a *complete* (and up-to-date) TeX distribution is required. Options include MacTeX, MiKTeX, and TeX Live.
+
+% For MiKTeX, please choose the “Net Installer” to install the complete MiKTeX distribution, rather than the “Basic Installer.”
+
+% Compilation via https://overleaf-en.astro.uni-bonn.de works in general.  Use “Shibboleth login” to log in with your Uni ID. Unfortunately, compiling the entire document may fail. Try compiling a shorted version (e.g., remove the appendices).
+
+% Compilation via https://uni-bonn.sciebo.de/apps/overleaf_nextcloud/launcher/launch also works in general. Here, compiling the entire document from scratch may lead to a time-out. Compiling the document again (and again) can help. So does compiling a shortened version (which can then be extended step by step).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  AUTHOR INFORMATION  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\newcommand{\studentfullname}{\AE nn\i\ Lu\"{i}\.{z}a Sn\^{e}\v{z}{\`a}\~{n}\'{a} H\r{a}land-\c{C}a{\l}han\H{o}\u{g}l\"{u}}
-\newcommand{\studentemail}{a.s.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
+\newcommand{\studentfullname}{\AE nn\i\ \'{E}lu\"{i}\.{z} Sn\^{e}\v{z}{\`a}\~{n}\'{a} H\r{a}land-\c{C}a{\l}han\H{o}\u{g}l\"{u}}
+\newcommand{\studentemail}{ae.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\studentID}{1234567}
+
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
+
 \newcommand{\manuscriptdate}{2026-07-27}  % In ISO format: yyyy-mm-dd
-\newcommand{\manuscripttype}{MA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
+
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
+
+\newcommand{\manuscripttype}{TP}
+	% BA-2F for Bachelor of Arts, 2-Fach-Modell (double-major program)
+	% BSc-ECS for Bachelor of Science in Economics and Computer Science
+	% BSc-VWL for Bachelor of Science in Volkswirtschaftslehre (Economics)
+	% MSc-Econ for Master of Science in Economics
+	% otherwise term paper
+
+\RequirePackage{ifthen}
+% Only relevant for BA-2F: 2nd major in the double-major bachelor’s program
+\ifthenelse{%
+	\equal{\manuscriptlanguage}{DE}%
+}{% German
+	\newcommand{\secondmajor}{XXXXXXXXXX}
+}{% English
+	\newcommand{\secondmajor}{\textit{\foreignlanguage{ngerman}{XXXXXXXXXX}}}
+}
+
 \newcommand{\seminartitle}{%
 	Exercises in Theoretical and Empirical Microeconomics and Macroeconomics, Using\nolinebreak\ State-of-the-Art Econometric Methods, to\nolinebreak\ Address Societal Issues All Around the World%
 }  % Only relevant for term papers, ignored for bachelor’s and master’s theses
@@ -51,7 +88,24 @@
 \usepackage[utf8]{inputenc}
 \usepackage[LGR, T1]{fontenc}  % LGR for Greek letters in text mode
 
-\usepackage{ifthen}
+\newboolean{manuscriptisbachelor}
+\newboolean{manuscriptismaster}
+\ifthenelse{%
+	\equal{\manuscripttype}{BA-2F} \OR
+	\equal{\manuscripttype}{BSc-ECS} \OR
+	\equal{\manuscripttype}{BSc-VWL}%
+}{%
+	\setboolean{manuscriptisbachelor}{true}%
+}{%
+	\setboolean{manuscriptisbachelor}{false}%
+}
+\ifthenelse{%
+	\equal{\manuscripttype}{MSc-Econ}%
+}{%
+	\setboolean{manuscriptismaster}{true}%
+}{%
+	\setboolean{manuscriptismaster}{false}%
+}
 \ifthenelse{%
 	\equal{\manuscriptlanguage}{DE}%
 }{% German
@@ -261,12 +315,10 @@
 		\null\vfill
 		{\fontsize{27.5pt}{32pt}\bfseries\manuscripttitle\par}
 		\vfill\vfill
-		{\huge\ifthenelse{\equal{\manuscripttype}{BA}}{Bachelor's Thesis}{%
-			\ifthenelse{\equal{\manuscripttype}{MA}}{Master's Thesis}{%
-				Term Paper%
-			}%
+		{\huge\ifthenelse{\boolean{manuscriptisbachelor}}{Bachelor's Thesis}{%
+			\ifthenelse{\boolean{manuscriptismaster}}{Master's Thesis}{Term Paper}%
 		}\par}
-		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{%
+		\ifthenelse{\boolean{manuscriptisbachelor} \OR \boolean{manuscriptismaster}}{%
 			\vspace{1.75\baselineskip}
 			Presented to the \\
 			Department of Economics at the \\
@@ -277,26 +329,47 @@
 			for the Seminar \par
 			\vspace{1.25\baselineskip}
 		}
-		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{%
+		\ifthenelse{\boolean{manuscriptisbachelor} \OR \boolean{manuscriptismaster}}{%
 			in partial fulfillment of the requirements for the degree of \\[\baselineskip]
-			\ifthenelse{\equal{\manuscripttype}{BA}}{Bachelor of Science (B.Sc.)}{Master of Science (M.Sc.)} \\
-			in Economics
+			\ifthenelse{\equal{\manuscripttype}{BA-2F}}{%
+				Bachelor of Arts (B.A.) \\
+				in the double-major program \textit{\foreignlanguage{ngerman}{Wirtschaftswissenschaften}} and \secondmajor \\
+				(\textit{\foreignlanguage{ngerman}{F\"acher im Zwei-Fach-Modell}})%
+			}{%
+				\ifthenelse{\equal{\manuscripttype}{BSc-ECS}}{%
+					Bachelor of Science (B.Sc.) \\
+					in Economics and Computer Science%
+				}{%
+					\ifthenelse{\equal{\manuscripttype}{BSc-VWL}}{%
+						Bachelor of Science (B.Sc.) \\
+						in \textit{\foreignlanguage{ngerman}{Volkswirtschaftslehre}}%
+					}{%
+						\ifthenelse{\boolean{manuscriptisbachelor}}{%
+							Bachelor of Science (B.Sc.) \\
+							in Economics%
+						}{%
+							Master of Science (M.Sc.) \\
+							in Economics%
+						}%
+					}%
+				}%
+			}%
 		}{
 			``\seminartitle''
 		}
 		\par
 		\vfill\vfill%\vspace{2\baselineskip}
-		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{Supervisor}{Instructor}: \\
+		\ifthenelse{\boolean{manuscriptisbachelor} \OR \boolean{manuscriptismaster}}{Supervisor}{Instructor}: \\
 		\advisorname
 		\vfill\vfill%\vfill
-		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{%
+		\ifthenelse{\boolean{manuscriptisbachelor} \OR \boolean{manuscriptismaster}}{%
 			Submitted in \printdayoff\printdate{\manuscriptdate}%
 		}{%
 			Submitted on \printdate{\manuscriptdate}%
 		}
 		by \\[1.5\baselineskip]
 		{\LARGE \@author} \\[1.5\baselineskip]
-		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{}{%
+		\ifthenelse{\boolean{manuscriptisbachelor} \OR \boolean{manuscriptismaster}}{}{%
 			E-Mail: \href{mailto:\studentemail}{\studentemail}\\%
 		}
 		Matriculation Number: \studentID
@@ -312,16 +385,31 @@
 		\null\vfill
 		{\fontsize{27.5pt}{32pt}\bfseries\manuscripttitle\par}
 		\vfill\vfill
-		{\huge\ifthenelse{\equal{\manuscripttype}{BA}}{Bachelorarbeit}{%
-			\ifthenelse{\equal{\manuscripttype}{MA}}{Masterarbeit}{%
-				Hausarbeit%
-			}%
+		{\huge\ifthenelse{\boolean{manuscriptisbachelor}}{Bachelorarbeit}{%
+			\ifthenelse{\boolean{manuscriptismaster}}{Masterarbeit}{Hausarbeit}%
 		}\par}
-		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{%
+		\ifthenelse{\boolean{manuscriptisbachelor} \OR \boolean{manuscriptismaster}}{%
 			\vspace{1.75\baselineskip}
 			zur Erlangung des Grades \\[\baselineskip]
-			\ifthenelse{\equal{\manuscripttype}{BA}}{Bachelor of Science (B.\,Sc.)}{Master of Science (M.\,Sc.)} \\
-			im Studiengang Volkswirtschaftslehre \\[\baselineskip]
+			\ifthenelse{\equal{\manuscripttype}{BA-2F}}{%
+				Bachelor of Arts (B.\,A.) \\
+				in den Teilstudieng\"angen Wirtschaftswissenschaften und \secondmajor \\
+				(F\"acher im Zwei-Fach-Modell)%
+			}{%
+				\ifthenelse{\equal{\manuscripttype}{BSc-ECS}}{%
+					Bachelor of Science (B.\,Sc.) \\
+					im Studiengang \textit{\foreignlanguage{USenglish}{Economics and Computer Science}}%
+				}{%
+					\ifthenelse{\boolean{manuscriptisbachelor}}{%
+						Bachelor of Science (B.\,Sc.) \\
+						im Studiengang Volkswirtschaftslehre%
+					}{%
+						Master of Science (M.\,Sc.) \\
+						im Studiengang \textit{\foreignlanguage{USenglish}{Economics}}%
+					}%
+				}%
+			}%
+			\\[\baselineskip]
 			an der \\
 			Rheinischen Friedrich-Wilhelms-Universit\"at Bonn%
 		}{%
@@ -335,14 +423,14 @@
 		Themensteller\ifthenelse{\equal{\advisorgender}{f}}{in}{\ifthenelse{\equal{\advisorgender}{m}}{}{*in}}: \\
 		\advisorname
 		\vfill\vfill%\vfill
-		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{%
+		\ifthenelse{\boolean{manuscriptisbachelor} \OR \boolean{manuscriptismaster}}{%
 			Vorgelegt im \datengerman\printdayoff\printdate{\manuscriptdate}%
 		}{
 			Vorgelegt am \datengerman\printdate{\manuscriptdate}%
 		}
 		von \\[1.5\baselineskip]
 		{\LARGE \@author} \\[1.5\baselineskip]
-		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{}{%
+		\ifthenelse{\boolean{manuscriptisbachelor} \OR \boolean{manuscriptismaster}}{}{%
 			E-Mail: \href{mailto:\studentemail}{\studentemail}\\%
 		}
 		Matrikelnummer: \studentID
@@ -999,8 +1087,8 @@
 	\href{https://tug.org/mactex/mactex-download.html}{MacTeX},
 	\href{https://miktex.org/download}{MiKTeX},
 	and \href{https://tug.org/texlive/acquire-netinstall.html}{TeX Live}. \mdseries For MiKTeX, please choose the ``Net Installer'' to install the \emph{complete} MiKTeX distribution, rather than the ``Basic Installer.'' \par \medskip
-	\bfseries Compilation via \url{https://overleaf-en.astro.uni-bonn.de} is also supported. \mdseries Use ``Shibboleth login'' to log in with your Uni~\caps{ID}. \par \medskip
-	\bfseries And compilation via \url{https://uni-bonn.sciebo.de/apps/overleaf_nextcloud/launcher/launch} should work, too. \mdseries Compiling the entire document from scratch may lead to a~time-out. Compiling the document again (and again) usually works. So does compiling a~shortened version. \par \medskip
+	\bfseries Compilation via \url{https://overleaf-en.astro.uni-bonn.de} works in general. \mdseries Use ``Shibboleth login'' to log in with your Uni~\caps{ID}.  Unfortunately, compiling the entire document may fail. Try compiling a shorted version (e.g., remove the appendices). \par \medskip
+	\bfseries Compilation via \url{https://uni-bonn.sciebo.de/apps/overleaf_nextcloud/launcher/launch} also works in general. \mdseries Here, compiling the entire document from scratch may lead to a~time-out. Compiling the document again (and again) can help. So does compiling a~shortened version (which can then be extended step by step). \par \medskip
 	\mdseries This document was compiled on \today\ with \PDFcompiler.%
 }}
 
@@ -5120,7 +5208,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 \end{appendix}
 
 
-\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{%
+\ifthenelse{\boolean{manuscriptisbachelor} \OR \boolean{manuscriptismaster}}{%
 	\renewcommand{\thepage}{}
 	\ifthenelse{%
 		\equal{\manuscriptlanguage}{DE}%
