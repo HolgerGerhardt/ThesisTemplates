@@ -37,12 +37,12 @@
 
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
 
-\newcommand{\manuscripttype}{TP}
-	% BA-2F for Bachelor of Arts, 2-Fach-Modell (double-major program)
-	% BSc-ECS for Bachelor of Science in Economics and Computer Science
-	% BSc-VWL for Bachelor of Science in Volkswirtschaftslehre (Economics)
-	% MSc-Econ for Master of Science in Economics
-	% otherwise term paper
+\newcommand{\manuscripttype}{TP}  % Term paper by default
+% Enable only one:
+%\renewcommand{\manuscripttype}{BA-2F}  % Bachelor of Arts, 2-Fach-Modell (double-major program)
+%\renewcommand{\manuscripttype}{BSc-ECS}  % Bachelor of Science in Economics and Computer Science
+%\renewcommand{\manuscripttype}{BSc-VWL}  % Bachelor of Science in Volkswirtschaftslehre (Economics)
+\renewcommand{\manuscripttype}{MSc-Econ}  % Master of Science in Economics
 
 \RequirePackage{ifthen}
 % Only relevant for BA-2F: 2nd major in the double-major bachelor’s program
