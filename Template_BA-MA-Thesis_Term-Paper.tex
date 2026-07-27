@@ -14,7 +14,7 @@
 \newcommand{\studentemail}{a.s.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\studentID}{1234567}
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
-\newcommand{\manuscriptdate}{2026-07-18}  % In ISO format: yyyy-mm-dd
+\newcommand{\manuscriptdate}{2026-07-27}  % In ISO format: yyyy-mm-dd
 \newcommand{\manuscripttype}{MA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
 \newcommand{\seminartitle}{%
@@ -270,7 +270,7 @@
 			\vspace{1.75\baselineskip}
 			Presented to the \\
 			Department of Economics at the \\
-			University of Bonn \par
+			Rheinische Friedrich-Wilhelms-Universit\"at Bonn \par
 			\vspace{1.25\baselineskip}
 		}{%
 			\vspace{1.25\baselineskip}
@@ -278,14 +278,15 @@
 			\vspace{1.25\baselineskip}
 		}
 		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{%
-			In Partial Fulfillment of the Requirements for the Degree of \\
-			\ifthenelse{\equal{\manuscripttype}{BA}}{Bachelor of Science (B.Sc.)}{Master of Science (M.Sc.)}
+			in partial fulfillment of the requirements for the degree of \\[\baselineskip]
+			\ifthenelse{\equal{\manuscripttype}{BA}}{Bachelor of Science (B.Sc.)}{Master of Science (M.Sc.)} \\
+			in Economics
 		}{
 			``\seminartitle''
 		}
 		\par
 		\vfill\vfill%\vspace{2\baselineskip}
-		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{Supervisor}{Instructor}: \\[0.5\baselineskip]
+		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{Supervisor}{Instructor}: \\
 		\advisorname
 		\vfill\vfill%\vfill
 		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{%
@@ -318,10 +319,11 @@
 		}\par}
 		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{%
 			\vspace{1.75\baselineskip}
-			zur Erlangung des \\
-			Grades \ifthenelse{\equal{\manuscripttype}{BA}}{Bachelor of Science (B.\,Sc.)}{Master of Science (M.\,Sc.)} \\
-			im Studiengang Volkswirtschaftslehre an der \\
-			Rheinischen Friedrich-Wilhelms-Universität Bonn%
+			zur Erlangung des Grades \\[\baselineskip]
+			\ifthenelse{\equal{\manuscripttype}{BA}}{Bachelor of Science (B.\,Sc.)}{Master of Science (M.\,Sc.)} \\
+			im Studiengang Volkswirtschaftslehre \\[\baselineskip]
+			an der \\
+			Rheinischen Friedrich-Wilhelms-Universit\"at Bonn%
 		}{%
 			\vspace{1.25\baselineskip}
 			zum Seminar \par
@@ -330,7 +332,7 @@
 		}
 		\par
 		\vfill\vfill%\vspace{2\baselineskip}
-		Themensteller\ifthenelse{\equal{\advisorgender}{f}}{in}{\ifthenelse{\equal{\advisorgender}{m}}{}{*in}}: \\[0.5\baselineskip]
+		Themensteller\ifthenelse{\equal{\advisorgender}{f}}{in}{\ifthenelse{\equal{\advisorgender}{m}}{}{*in}}: \\
 		\advisorname
 		\vfill\vfill%\vfill
 		\ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{%
