@@ -3,7 +3,7 @@
 
 ## General Information
 
-This repository includes a LaTeX template and a Microsoft Word template for bachelor’s/master’s theses and term papers.
+This repository includes a LaTeX template and a Microsoft Word template for bachelor’s and master’s theses, and term papers.
 
 The formatting used in the templates corresponds to the requirements specified by the examination office of the Department of Economics at the University of Bonn.
 
