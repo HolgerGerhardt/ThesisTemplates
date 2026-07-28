@@ -21,9 +21,9 @@ Word does not store custom caption labels in the document itself but only in the
 To work around this restriction, use the macro-enabled
 
 * [_Thesis Template EN custom labels.docm_](https://github.com/HolgerGerhardt/ThesisTemplates/blob/main/Thesis%20Template%20EN%20custom%20labels.docm) or
-* [_Thesis Template DE custom labels.docm_](https://github.com/HolgerGerhardt/ThesisTemplates/blob/main/Thesis%20Template%20DE%20custom%20labels.docm) file,
+* [_Thesis Template DE custom labels.docm_](https://github.com/HolgerGerhardt/ThesisTemplates/blob/main/Thesis%20Template%20DE%20custom%20labels.docm)
 
-depending on the language of your thesis/paper.
+file, depending on the language of your thesis/paper.
 
 These files include Visual Basic macros that generate the following caption labels, respectively:
 
